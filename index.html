@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Compare your resume with a job description and get a clear, private match scorecard."
+    />
+    <meta name="theme-color" content="#f7f8fc" />
+    <title>Matcha — Resume match, made clear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              ink: "#17211d",
+              mint: "#c5f36a",
+              forest: "#244b3b",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen bg-[#f7f8fc] font-sans text-ink antialiased">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Matcha home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M7 22.8 14.8 7l3.1 6.2L12 26H8.5a1.7 1.7 0 0 1-1.5-3.2Z" fill="currentColor"/>
+            <path d="m18.7 13.2 4.1-8.3 7 14a1.7 1.7 0 0 1-1.5 2.5H16.8l1.9-4h5.3l-5.3-4.2Z" fill="currentColor" opacity=".58"/>
+            <path d="M11.5 25.5h15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>matcha<span class="brand-period">.</span></span>
+      </a>
+      <div class="header-note">
+        <span class="privacy-dot"></span>
+        Your resume stays on your device
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT ROLE, IN FOCUS</div>
+        <h1>A better match<br class="mobile-break" /> starts <span>right here.</span></h1>
+        <p>See how your resume lines up with the role. Get a clear score, spot what’s missing, and know what to work on next.</p>
+        <div class="step-track" aria-label="Three steps: upload, compare, improve">
+          <div class="step-item active"><span class="step-number">1</span> Add your resume</div>
+          <span class="step-connector"></span>
+          <div class="step-item"><span class="step-number">2</span> Add the job</div>
+          <span class="step-connector"></span>
+          <div class="step-item"><span class="step-number">3</span> Get your match</div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Resume comparison">
+        <div class="input-grid">
+          <section class="input-card resume-card" aria-labelledby="resume-heading">
+            <div class="card-heading">
+              <div class="heading-icon resume-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 3.75h7l4 4v12.5H7a2 2 0 0 1-2-2v-12.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 4v4h4M8.5 12h7M8.5 15.5h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <h2 id="resume-heading">Your resume</h2>
+                <p>Start with the latest version</p>
+              </div>
+              <span class="card-count">01</span>
+            </div>
+            <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose a PDF or DOCX resume, or drop it here">
+              <input id="resume-file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden />
+              <div class="upload-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 15V4m0 0L8 8m4-4 4 4M5 14.5v3A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="drop-title">Drop your resume here</div>
+              <div class="drop-subtitle">or <span>browse files</span> from your device</div>
+              <div class="file-types"><span>PDF</span><span>DOCX</span><span>UP TO 10 MB</span></div>
+            </div>
+            <div class="file-status" id="file-status" aria-live="polite"></div>
+            <p class="privacy-note">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 3.5 5v4.8c0 3.6 2.5 6.8 6.5 7.7 4-.9 6.5-4.1 6.5-7.7V5L10 2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m7.5 10 1.7 1.7 3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Files are read locally and never uploaded
+            </p>
+          </section>
+
+          <section class="input-card job-card" aria-labelledby="job-heading">
+            <div class="card-heading">
+              <div class="heading-icon job-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6.5" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M9 6.5v-1A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5v1M4 11h16m-10 0v1.5h4V11" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h2 id="job-heading">The job description</h2>
+                <p>Paste the role you have your eye on</p>
+              </div>
+              <span class="card-count">02</span>
+            </div>
+            <div class="jd-wrap">
+              <label class="sr-only" for="job-description">Paste the job description</label>
+              <textarea id="job-description" maxlength="16000" placeholder="Paste the job description here…&#10;&#10;Include the responsibilities, qualifications, and skills so we can give you the most useful comparison." spellcheck="true"></textarea>
+              <div class="textarea-footer">
+                <span id="jd-hint">The more detail, the better your match.</span>
+                <span><b id="char-count">0</b> / 16,000</span>
+              </div>
+            </div>
+            <div class="job-tip"><span aria-hidden="true">✦</span> Tip: include the full posting, not just the title.</div>
+          </section>
+        </div>
+
+        <div class="action-row">
+          <button class="sample-button" id="sample-button" type="button">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            Try a sample
+          </button>
+          <div class="analyze-wrap">
+            <span class="form-error" id="form-error" role="alert"></span>
+            <button class="analyze-button" id="analyze-button" type="button">
+              <span>See my match</span>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="results" id="results" aria-labelledby="results-title" hidden>
+        <div class="results-heading">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> YOUR MATCH REPORT</div>
+            <h2 id="results-title">Here’s where you stand.</h2>
+            <p id="results-summary"></p>
+          </div>
+          <button type="button" class="reset-button" id="reset-button">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.3 9a6.8 6.8 0 1 1 .8 4.4M3 4v5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Start over
+          </button>
+        </div>
+
+        <div class="score-grid">
+          <article class="score-card overall-card">
+            <div class="score-card-label">OVERALL MATCH <span class="info-dot" title="A keyword overlap estimate, not a hiring prediction.">i</span></div>
+            <div class="score-display">
+              <div class="score-ring" id="score-ring"><div class="score-ring-inner"><span id="overall-score">0</span><small>%</small></div></div>
+              <div class="score-verdict"><strong id="score-label">Building your report</strong><span>keyword alignment</span></div>
+            </div>
+            <div class="score-rule"></div>
+            <p class="score-explainer">An estimate of how closely the terms in your resume align with this job description.</p>
+          </article>
+          <article class="score-card stat-card">
+            <span class="stat-icon mint-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="m4 12.5 5 5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="stat-value" id="matched-count">0<span> / 0</span></div>
+            <div class="stat-title">Relevant terms found</div>
+            <p class="stat-caption">From the job description</p>
+          </article>
+          <article class="score-card stat-card">
+            <span class="stat-icon lavender-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5v17m-8.5-8.5h17M5.5 5.5l13 13m0-13-13 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </span>
+            <div class="stat-value" id="gap-count">0</div>
+            <div class="stat-title">Terms to strengthen</div>
+            <p class="stat-caption">Worth addressing in your resume</p>
+          </article>
+          <article class="score-card category-card">
+            <div class="category-title">Match by category <span>Term coverage within each group</span></div>
+            <div class="category-bars" id="category-bars"></div>
+          </article>
+        </div>
+
+        <div class="insights-grid">
+          <article class="insight-card">
+            <div class="insight-heading">
+              <span class="insight-icon strengths-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5 13.9 9l5.6 1.8-5.6 1.9-1.9 5.6-1.8-5.6-5.7-1.9L10.2 9 12 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m19 15 .9 2.2 2.1.8-2.1.8L19 21l-.8-2.2-2.2-.8 2.2-.8L19 15Z" fill="currentColor"/></svg>
+              </span>
+              <div><h3>What’s already working</h3><p>Your resume shows evidence of these terms</p></div>
+            </div>
+            <div class="tag-list" id="strength-tags"></div>
+            <p class="empty-insight" id="strength-empty">Add a resume and job description to see your strengths.</p>
+          </article>
+          <article class="insight-card">
+            <div class="insight-heading">
+              <span class="insight-icon gaps-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v4.5m0 3h.01M10.2 4.6 2.9 17.2a1.7 1.7 0 0 0 1.5 2.5h15.2a1.7 1.7 0 0 0 1.5-2.5L13.8 4.6a2.1 2.1 0 0 0-3.6 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div><h3>Potential gaps</h3><p>These job terms weren’t found in your resume</p></div>
+            </div>
+            <div class="tag-list" id="gap-tags"></div>
+            <p class="empty-insight" id="gap-empty">Add a resume and job description to see potential gaps.</p>
+          </article>
+        </div>
+        <p class="results-disclaimer">This is a simple, on-device keyword comparison—not an ATS simulation or a prediction of hiring outcomes. Always tailor your resume truthfully to your experience.</p>
+      </section>
+
+      <footer class="page-footer">
+        <span>Thoughtful applications start with a little clarity.</span>
+        <span class="footer-lock"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.3"/></svg> Private by design</span>
+      </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
