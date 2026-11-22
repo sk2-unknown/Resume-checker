@@ -1,0 +1,22 @@
+# Matcha resume checker
+
+## Run locally
+
+1. Install dependencies with `npm.cmd install`.
+2. Copy `server/.env.example` to `server/.env` and set `LABD_API_KEY` to your Labd API key. `LABD_API_URL` is optional and defaults to the Labd chat endpoint.
+3. Run `npm.cmd run dev:all`.
+4. Open the Vite URL printed in the terminal (usually `http://localhost:5173`).
+
+The Vite development server proxies `/api` requests to the Express API on port 3001. Alternatively, run `npm.cmd run dev` and `npm.cmd run server` in separate terminals.
+
+## Analysis and report storage
+
+The browser sends the selected PDF/DOCX and job description to the Express server only after the user checks the consent box and requests an analysis. The server extracts the resume text and sends it to Labd using the server-side `LABD_API_KEY`. The key must never be placed in frontend code.
+
+Successful analysis reports are saved as JSON in `server/reports/`. Reports are ignored by Git and are not pushed to the remote repository. Each report contains the AI response and metadata; the original resume and job description are not stored. Treat the report directory as sensitive local data and remove reports when they are no longer needed.
+
+The browser also displays a local keyword-overlap estimate. This score is not a hiring prediction. Uploaded files are limited to 10 MB and job descriptions to 16,000 characters.
+
+## Production
+
+Build the frontend with `npm.cmd run build`, then set `$env:NODE_ENV = "production"` and run `npm.cmd run server` in PowerShell. Express serves the built `dist/` files and the `/api` endpoints from the same origin. Provide `LABD_API_KEY` through the server environment or `server/.env`; never commit an actual API key.
