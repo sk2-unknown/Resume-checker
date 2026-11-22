@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Matcha resume checker
 
 ## Run locally
@@ -21,6 +20,3 @@ The browser also displays a local keyword-overlap estimate. This score is not a 
 ## Production
 
 Build the frontend with `npm.cmd run build`, then set `$env:NODE_ENV = "production"` and run `npm.cmd run server` in PowerShell. Express serves the built `dist/` files and the `/api` endpoints from the same origin. Provide `LABD_API_KEY` through the server environment or `server/.env`; never commit an actual API key.
-=======
-# Resume-checker
->>>>>>> 8c75d77ec8add1cfbb41e0a2eb332a726c5dac57
