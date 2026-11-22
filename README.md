@@ -11,7 +11,7 @@ The Vite development server proxies `/api` requests to the Express API on port 3
 
 ## Analysis and report storage
 
-The browser sends the selected PDF/DOCX and job description to the Express server only after the user checks the consent box and requests an analysis. The server extracts the resume text and sends it to Labd using the server-side `LABD_API_KEY`. The key must never be placed in frontend code.
+The browser extracts text from the selected PDF/DOCX on the user's device. Only after the user checks the consent box and requests an analysis, the extracted resume text and job description are sent to the Express server and then to Labd using the server-side `LABD_API_KEY`. The original file stays in the browser, and the key must never be placed in frontend code.
 
 Successful analysis reports are saved as JSON in `server/reports/`. Reports are ignored by Git and are not pushed to the remote repository. Each report contains the AI response and metadata; the original resume and job description are not stored. Treat the report directory as sensitive local data and remove reports when they are no longer needed.
 

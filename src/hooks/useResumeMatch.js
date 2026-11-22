@@ -14,7 +14,7 @@ export function useResumeMatch(resumeText, jobDescription) {
     setIsAnalyzing(false);
   }, [resumeText, jobDescription]);
 
-  const analyze = useCallback(async (file, currentResumeText) => {
+  const analyze = useCallback(async (currentResumeText) => {
     if (!resumeText) {
       setError("Add a readable PDF or DOCX resume first.");
       return false;
@@ -37,11 +37,7 @@ export function useResumeMatch(resumeText, jobDescription) {
     try {
       const formData = new FormData();
       formData.append("jobDescription", jobDescription.trim());
-      if (file) {
-        formData.append("resume", file, file.name);
-      } else {
-        formData.append("resumeText", currentResumeText);
-      }
+      formData.append("resumeText", currentResumeText);
 
       const response = await fetch("/api/analyze", {
         method: "POST",

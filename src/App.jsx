@@ -71,7 +71,7 @@ export default function App() {
               <button
                 className="analyze-button"
                 type="button"
-                onClick={() => analyze(resume.file, resume.text)}
+                onClick={() => analyze(resume.text)}
                 disabled={resume.isLoading || isAnalyzing || !consentGiven}
               >
                 <span>{resume.isLoading ? "Reading resume…" : isAnalyzing ? "Analyzing…" : "See my match"}</span>
