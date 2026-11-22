@@ -137,12 +137,14 @@ async function analyzeRequest(request, response) {
     credits: result.credits ?? null,
   };
 
-  await mkdir(reportsDirectory, { recursive: true });
-  await writeFile(
-    path.join(reportsDirectory, `${reportId}.json`),
-    `${JSON.stringify(report, null, 2)}\n`,
-    { flag: "wx" },
-  );
+  if (!process.env.VERCEL) {
+    await mkdir(reportsDirectory, { recursive: true });
+    await writeFile(
+      path.join(reportsDirectory, `${reportId}.json`),
+      `${JSON.stringify(report, null, 2)}\n`,
+      { flag: "wx" },
+    );
+  }
 
   response.json(report);
 }
@@ -224,13 +226,17 @@ app.use((error, _request, response, _next) => {
   response.status(500).json({ error: "We couldn’t complete the analysis. Please try again." });
 });
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" && !process.env.VERCEL) {
   app.use(express.static(clientDirectory));
   app.get("*", (_request, response) => {
     response.sendFile(path.join(clientDirectory, "index.html"));
   });
 }
 
-app.listen(port, () => {
-  console.log(`Resume analysis API listening at http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Resume analysis API listening at http://localhost:${port}`);
+  });
+}
+
+export default app;

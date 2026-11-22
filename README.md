@@ -20,3 +20,9 @@ The browser also displays a local keyword-overlap estimate. This score is not a 
 ## Production
 
 Build the frontend with `npm.cmd run build`, then set `$env:NODE_ENV = "production"` and run `npm.cmd run server` in PowerShell. Express serves the built `dist/` files and the `/api` endpoints from the same origin. Provide `LABD_API_KEY` through the server environment or `server/.env`; never commit an actual API key.
+
+## Vercel deployment
+
+The root `api/[...path].js` entry exposes the Express API as a Vercel Function, so `/api/analyze` and `/api/health` use the same routes as local development. Add `LABD_API_KEY` in the Vercel project's Environment Variables for each deployment environment, then redeploy. Do not rely on `server/.env` in a Vercel deployment.
+
+Vercel function filesystems are temporary, so analysis reports are returned to the browser but are not saved to `server/reports/` in Vercel. Local runs continue to save reports there.
